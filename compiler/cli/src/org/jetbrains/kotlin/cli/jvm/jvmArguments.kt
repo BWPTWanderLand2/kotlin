@@ -53,7 +53,7 @@ fun CompilerConfiguration.setupJvmSpecificArguments(arguments: K2JVMCompilerArgu
         val runtimeStringConcat = JvmRuntimeStringConcat.fromString(arguments.runtimeStringConcat!!)
         if (runtimeStringConcat != null) {
             put(JVMConfigurationKeys.RUNTIME_STRING_CONCAT, runtimeStringConcat)
-            if (jvmTarget.bytecodeVersion < JvmTarget.JVM_9.bytecodeVersion) {
+            if (jvmTarget.bytecodeVersion < JvmTarget.JVM_9.bytecodeVersion && runtimeStringConcat != JvmRuntimeStringConcat.DISABLE) {
                 messageCollector.report(
                     WARNING,
                     "`-Xruntime-string-concat=${arguments.runtimeStringConcat}` do nothring with JVM target `${jvmTarget.description}`."
