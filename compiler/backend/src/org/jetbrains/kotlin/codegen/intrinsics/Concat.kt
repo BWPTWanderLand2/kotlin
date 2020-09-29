@@ -97,7 +97,7 @@ class Concat : IntrinsicMethod() {
                 // in case of callable reference passed to a generic function, e.g.:
                 //      charArrayOf('O', 'K').fold("", String::plus)
                 // TODO Make String::plus generic, and invoke proper StringBuilder#append.
-                generator.invokeAppend(AsmTypes.OBJECT_TYPE)
+                generator.invokeAppend(AsmTypes.OBJECT_TYPE) //TODO: process constants properly for invokedynamic, do not upcast to object
                 generator.genToString()
             }
         }
